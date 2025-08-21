@@ -1,10 +1,8 @@
 from google import genai
-from dotenv import load_dotenv
 import os
 import json
 import re
 
-load_dotenv()
 
 gemini_api = os.getenv("GEMINI_API_KEY")
 
