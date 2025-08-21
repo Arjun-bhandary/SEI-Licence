@@ -27,7 +27,7 @@ INPUT_SUMMARY:
 {self.summary}
 
 OUTPUT REQUIREMENTS (strict — must follow exactly):
-
+ALL VALUES MUST BE IN SEI (1SEI = 0.33USD)
 1. Top-level output: a JSON array with exactly 3 objects.
 
 2. Each object must include the following fields (names and types must match exactly):
@@ -37,10 +37,9 @@ OUTPUT REQUIREMENTS (strict — must follow exactly):
 - "license_type": string — one of: "open-attribution", "permissive-patent", "commercial-revenue-share", "saas-api", "dual-license", "contributor-revenue-split" (choose the best-fit label).
 - "royalties": object containing:
     - "model": string — one of: "none", "percentage", "per_call_or_subscription", "flat_fee".
-    - "value": number — if model is "percentage" use integer (0-100). If "flat_fee" use USD amount. If "per_call_or_subscription" use numeric per-call USD (e.g., 0.005) or 0 if variable.
-    - "split": object or null — if present, keys are stakeholders and values are integers that sum to 100. If not applicable, set null.
+    - "value": number — if model is "percentage" use integer (0-100). If "flat_fee" use SEI amount(1 SEI = 0.33USD). If "per_call_or_subscription" use numeric per-call SEI (e.g., 0.005) or 0 if variable.
     - "payment_interval_days": integer or null — days between payouts (e.g., 30, 90) or null.
-    - "min_fee_usd": number or null — minimum payable fee in USD, or null.
+    - "mint_fee": Fee taken to mint the license token in SEI (should be around 0.02)
     - "notes": string — short note about how royalties apply (1-2 sentences).
 
 - "restrictions": array of strings — key restrictions/obligations (e.g., attribution, no redistribution of weights, reporting, telemetry).
