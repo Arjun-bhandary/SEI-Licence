@@ -1,0 +1,61 @@
+[
+  {
+    "license_id": "OPEN-001",
+    "license_name": "Open Attribution License",
+    "license_type": "open-attribution",
+    "royalties": {
+      "model": "none",
+      "value": 0,
+      "split": null,
+      "payment_interval_days": null,
+      "min_fee_usd": null,
+      "notes": "No royalties; attribution required in any work using the code, models, or datasets."
+    },
+    "restrictions": [
+      "Attribution required",
+      "No redistribution of model weights without explicit permission",
+      "Datasets may be used for non-commercial purposes only"
+    ]
+  },
+  {
+    "license_id": "REVSHARE-001",
+    "license_name": "Commercial Revenue Share",
+    "license_type": "commercial-revenue-share",
+    "royalties": {
+      "model": "percentage",
+      "value": 10,
+      "split": {
+        "Authors": 70,
+        "Contributors": 30
+      },
+      "payment_interval_days": 90,
+      "min_fee_usd": 1000,
+      "notes": "10 PERCENT revenue share on commercial applications using the code, model weights or datasets; split as indicated. Minimum annual payout is USD 1000."
+    },
+    "restrictions": [
+      "Attribution required",
+      "Commercial use requires royalty payment",
+      "Revenue reporting required annually",
+      "Code modifications must be open-sourced under the same license"
+    ]
+  },
+  {
+    "license_id": "COMMERCIAL-001",
+    "license_name": "Commercial License",
+    "license_type": "commercial-revenue-share",
+    "royalties": {
+      "model": "per_call_or_subscription",
+      "value": 0.01,
+      "split": null,
+      "payment_interval_days": 30,
+      "min_fee_usd": null,
+      "notes": "Commercial use requires a per-call/subscription fee of 0.01 USD_PER_CALL for API access and usage of the model weights.  Contact authors for details."
+    },
+    "restrictions": [
+      "Attribution required",
+      "Commercial use requires license agreement",
+      "No redistribution of the model or code without explicit permission",
+      "Datasets usage limited to permitted domains"
+    ]
+  }
+]
