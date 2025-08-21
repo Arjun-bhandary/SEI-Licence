@@ -1,6 +1,7 @@
 import os
 import tempfile
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 # Import your existing Agent class from agent.py
 from agent import Agent
@@ -9,6 +10,15 @@ app = FastAPI(
     title="License Generator API",
     description="Upload a research paper summary JSON to generate license templates."
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.post("/generate-licenses/", status_code=200)
 async def create_licenses(file: UploadFile = File(...)):
