@@ -46,6 +46,8 @@ ALL VALUES MUST BE IN SEI (1SEI = 0.33USD)
 
 3. Additional rules & constraints:
 - All 3 licenses must be distinct (different "license_type" or different royalty models).
+- The license must be decided strictly based on the information given in the summary.
+- Analyse the summary and strictly on that information decide the use cases of the information.
 - Tailor each license to the input summary: reference relevant artifact types present in the summary in "restrictions" or "notes" where appropriate.
 - The "royalties" field must be prominent and realistic (e.g., common revenue-share values 5–30% or per-call pricing like 0.001–0.05 USD).
 - If "split" is provided, the integer parts must sum to 100.
