@@ -1,4 +1,5 @@
 from google import genai
+from google.genai import types
 import os
 import json
 import re
@@ -39,13 +40,14 @@ ALL VALUES MUST BE IN SEI (1SEI = 0.33USD)
     - "model": string — one of: "none", "percentage", "per_call_or_subscription", "flat_fee".
     - "value": number — if model is "percentage" use integer (0-100). If "flat_fee" use SEI amount(1 SEI = 0.33USD). If "per_call_or_subscription" use numeric per-call SEI (e.g., 0.005) or 0 if variable.
     - "payment_interval_days": integer or null — days between payouts (e.g., 30, 90) or null.
-    - "mint_fee": Fee taken to mint the license token in SEI (should be around 0.02)
+    - "mint_fee": Find a realistic mint fee based on the profit made. (should be between 0.01 to 0.05 SEI).
     - "notes": string — short note about how royalties apply (1-2 sentences).
 
 - "restrictions": array of strings — key restrictions/obligations (e.g., attribution, no redistribution of weights, reporting, telemetry).
 
 3. Additional rules & constraints:
 - All 3 licenses must be distinct (different "license_type" or different royalty models).
+- Make sure to choose any other license_type if it seems like a better fit.
 - The license must be decided strictly based on the information given in the summary.
 - Analyse the summary and strictly on that information decide the use cases of the information.
 - Tailor each license to the input summary: reference relevant artifact types present in the summary in "restrictions" or "notes" where appropriate.
@@ -63,8 +65,12 @@ END.
 """
 
       resp = client.models.generate_content(
-        model="gemini-1.5-flash",
-        contents=prompt
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.1,
+            top_p=0.3
+        )
       )
       
       cleaned_str = re.sub(r"^\s*```json\s*|\s*```\s*$", "", resp.text.strip(), flags=re.MULTILINE).strip()
